@@ -25,8 +25,8 @@ class Rigwatch < Formula
       Start RigWatch with:
         rigwatch
 
-      To also find it in your Applications folder:
-        ln -sfn "#{opt_prefix}/RigWatch.app" ~/Applications/RigWatch.app
+      The first run puts a copy of RigWatch in ~/Applications, so Spotlight and
+      Launchpad find it. After `brew upgrade`, reopening RigWatch updates that copy.
     EOS
   end
 
