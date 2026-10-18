@@ -1,8 +1,8 @@
 class Rigwatch < Formula
   desc "Mission control for a developer's Mac: agents, emulators, builds and caches"
   homepage "https://github.com/bravoshubham/rigwatch"
-  url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.3.1.tar.gz"
-  sha256 "3e2d518d44acd28ce98d4dd516700e3a3d1840f50a1179e456686880ab386aa2"
+  url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.4.0.tar.gz"
+  sha256 "1011b201e4392688521a77b3366a9f21a651f3029423831245b7e85f3f8dd289"
   license "MIT"
   head "https://github.com/bravoshubham/rigwatch.git", branch: "main"
 
