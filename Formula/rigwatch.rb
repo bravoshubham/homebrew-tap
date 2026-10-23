@@ -4,6 +4,7 @@ class Rigwatch < Formula
   url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.5.0.tar.gz"
   sha256 "4f176cf4437d057b4d1e20ea145f1e29d9b229779ddb4d95da677a1bcc1b6cc0"
   license "MIT"
+  revision 1
   head "https://github.com/bravoshubham/rigwatch.git", branch: "main"
 
   depends_on macos: :sonoma
@@ -14,9 +15,26 @@ class Rigwatch < Formula
     ENV["RIGWATCH_SWIFT_FLAGS"] = "--disable-sandbox"
     system "./bundle.sh"
 
+    # Rules commands run the program directly, so their output reaches the terminal. They use the copy
+    # in ~/Applications when it is at least this build: its path never changes, so a hook or clean-up
+    # agent installed from it keeps working after `brew upgrade`. Anything else opens the app.
     (bin/"rigwatch").write <<~SH
       #!/bin/bash
-      exec /usr/bin/open "#{opt_prefix}/RigWatch.app" --args "$@"
+      brew_app="#{opt_prefix}/RigWatch.app"
+      copy="$HOME/Applications/RigWatch.app"
+      build() { /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$1/Contents/Info.plist" 2>/dev/null || echo 0; }
+      case "$1" in
+        run|hook|reap|status|wt|pin|unpin|install|uninstall|help)
+          if [ -x "$copy/Contents/MacOS/RigWatch" ] && [ "$(build "$copy")" -ge "$(build "$brew_app")" ]; then
+            exec "$copy/Contents/MacOS/RigWatch" "$@"
+          fi
+          if [ "$1" = install ]; then
+            echo "Run 'rigwatch' once first: it puts an up-to-date RigWatch in ~/Applications, which the rules run from." >&2
+            exit 1
+          fi
+          exec "$brew_app/Contents/MacOS/RigWatch" "$@" ;;
+      esac
+      exec /usr/bin/open "$brew_app" --args "$@"
     SH
   end
 
