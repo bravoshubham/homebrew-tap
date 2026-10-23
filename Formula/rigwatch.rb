@@ -23,7 +23,7 @@ class Rigwatch < Formula
       copy="$HOME/Applications/RigWatch.app"
       build() { /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$1/Contents/Info.plist" 2>/dev/null || echo 0; }
       case "$1" in
-        run|hook|reap|status|wt|pin|unpin|install|uninstall|help|version|--version)
+        run|hook|reap|status|wt|pin|unpin|answer|install|uninstall|help|version|--version)
           if [ -x "$copy/Contents/MacOS/RigWatch" ] && [ "$(build "$copy")" -ge "$(build "$brew_app")" ]; then
             exec "$copy/Contents/MacOS/RigWatch" "$@"
           fi
