@@ -1,8 +1,8 @@
 class Rigwatch < Formula
   desc "Mission control for a developer's Mac: agents, emulators, builds and caches"
   homepage "https://github.com/bravoshubham/rigwatch"
-  url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.11.8.tar.gz"
-  sha256 "7065941f8ae8be03cb803e05fcaca323bd3a8e6a497db611c2cee89be9d2806f"
+  url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.11.9.tar.gz"
+  sha256 "39b02d80b252e6eca9b59d87ca2ef532db3db04ebafc173b0e81a27dfba43374"
   license "MIT"
   head "https://github.com/bravoshubham/rigwatch.git", branch: "main"
 
@@ -23,7 +23,7 @@ class Rigwatch < Formula
       copy="$HOME/Applications/RigWatch.app"
       build() { /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$1/Contents/Info.plist" 2>/dev/null || echo 0; }
       case "$1" in
-        run|hook|mcp|peer|reap|status|wt|pin|unpin|answer|install|uninstall|help|version|--version)
+        run|hook|mcp|peer|reap|status|wt|pin|unpin|answer|install|uninstall|help|version|--version|iphone|progress)
           if [ -x "$copy/Contents/MacOS/RigWatch" ] && [ "$(build "$copy")" -ge "$(build "$brew_app")" ]; then
             exec "$copy/Contents/MacOS/RigWatch" "$@"
           fi
