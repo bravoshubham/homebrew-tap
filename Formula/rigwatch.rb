@@ -6,6 +6,12 @@ class Rigwatch < Formula
   license "MIT"
   head "https://github.com/bravoshubham/rigwatch.git", branch: "main"
 
+  # Built on Apple silicon for macOS 14 (the app's minimum), so newer macOS pours it too and needs no Xcode.
+  bottle do
+    root_url "https://github.com/bravoshubham/rigwatch/releases/download/v1.11.11"
+    sha256 arm64_sonoma: "e688986cae2462fc284e85c0b907debe5641a7d250be67ba3d3f7b26bbe14729"
+  end
+
 
   depends_on macos: :sonoma
 
