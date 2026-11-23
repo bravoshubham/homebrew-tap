@@ -1,15 +1,15 @@
 class Rigwatch < Formula
   desc "Mission control for a developer's Mac: agents, emulators, builds and caches"
   homepage "https://github.com/bravoshubham/rigwatch"
-  url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.11.12.tar.gz"
-  sha256 "aa0739920f133b2c86ca5f1b069d12bd644f143efddbe6d7364a93893b9ce0aa"
+  url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.11.13.tar.gz"
+  sha256 "9f9c60e6081c03730583c71093ec43b4c67ee719623a37d59655c5151b15618c"
   license "MIT"
   head "https://github.com/bravoshubham/rigwatch.git", branch: "main"
 
   # Built on Apple silicon for macOS 14 (the app's minimum), so newer macOS pours it too and needs no Xcode.
   bottle do
-    root_url "https://github.com/bravoshubham/rigwatch/releases/download/v1.11.12"
-    sha256 arm64_sonoma: "c7f9690d2d2568a3e6c5c4af1bbd79ac4121b0659a8fad1b002b511b2c5d9baf"
+    root_url "https://github.com/bravoshubham/rigwatch/releases/download/v1.11.13"
+    sha256 arm64_sonoma: "f704c913a9f127f320d4666a6ed65af7fb7c76a6605a2c457bb94e959353bb41"
   end
 
 
