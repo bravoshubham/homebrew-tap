@@ -4,12 +4,13 @@ class Rigwatch < Formula
   url "https://github.com/bravoshubham/rigwatch/archive/refs/tags/v1.11.18.tar.gz"
   sha256 "489041bc10181973b7372af52c7855f20f3cf5c00ae4c3765f258c0d2b5db0d0"
   license "MIT"
+  revision 1
   head "https://github.com/bravoshubham/rigwatch.git", branch: "main"
 
   # Built on Apple silicon for macOS 14 (the app's minimum), so newer macOS pours it too and needs no Xcode.
   bottle do
     root_url "https://github.com/bravoshubham/rigwatch/releases/download/v1.11.18"
-    sha256 arm64_sonoma: "43c2f63d2b51e1efdf8369d92006e9fff908c6a6dfad3931d91be834527d195c"
+    sha256 arm64_sonoma: "0b5297405a59675328e1f8f25f58a71bb0da234a693892cc6c352e0477c26d1c"
   end
 
 
@@ -30,7 +31,7 @@ class Rigwatch < Formula
       copy="$HOME/Applications/RigWatch.app"
       build() { /usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$1/Contents/Info.plist" 2>/dev/null || echo 0; }
       case "$1" in
-        run|hook|mcp|peer|reap|status|wt|pin|unpin|answer|install|uninstall|help|version|--version|iphone|progress)
+        run|hook|mcp|peer|reap|status|wt|pin|unpin|answer|install|uninstall|help|version|--version|iphone|progress|integrator|mcp-lazy)
           if [ -x "$copy/Contents/MacOS/RigWatch" ] && [ "$(build "$copy")" -ge "$(build "$brew_app")" ]; then
             exec "$copy/Contents/MacOS/RigWatch" "$@"
           fi
