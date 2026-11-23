@@ -8,8 +8,8 @@ class Rigwatch < Formula
 
   # Built on Apple silicon for macOS 14 (the app's minimum), so newer macOS pours it too and needs no Xcode.
   bottle do
-    root_url "https://github.com/bravoshubham/rigwatch/releases/download/v1.11.11"
-    sha256 arm64_sonoma: "e688986cae2462fc284e85c0b907debe5641a7d250be67ba3d3f7b26bbe14729"
+    root_url "https://github.com/bravoshubham/rigwatch/releases/download/v1.11.12"
+    sha256 arm64_sonoma: "c7f9690d2d2568a3e6c5c4af1bbd79ac4121b0659a8fad1b002b511b2c5d9baf"
   end
 
 
